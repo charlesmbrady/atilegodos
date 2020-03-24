@@ -1,8 +1,9 @@
 const fs = require('fs');
-const path = require('path');
-require('dotenv').config();
+const path = require('path'); // Lets us use __dirname as the relative filepath from this file
+require('dotenv').config(path.join(__dirname, '../.env'));
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
+console.log('ENVIRONMENT IS ' + process.env.NODE_ENV);
 const env = process.env.NODE_ENV || 'development';
 const config = require(path.join(__dirname, '/../config/config.js'))[env];
 const db = {};

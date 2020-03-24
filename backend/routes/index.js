@@ -9,6 +9,10 @@ router.use('/auth', authRoutes);
 // API Routes
 router.use('/api', apiRoutes);
 
+router.get('/healthcheck', (req, res) => {
+  res.send('App is running!');
+});
+
 // If no routes are hit, send the React app
 // router.use(function(req, res) {
 //   res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));

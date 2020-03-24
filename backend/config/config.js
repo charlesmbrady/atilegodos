@@ -1,10 +1,12 @@
-require('dotenv').config();
+const path = require('path'); // Lets us use __dirname as the relative filepath from this file
+require('dotenv').config(path.join(__dirname, '../../.env'));
+console.log(process.env.MYSQL_USER);
 
 module.exports = {
   development: {
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: 'mernolithic_dev',
+    database: 'atilegodos_dev',
     details: {
       host: 'localhost',
       port: 3306,
@@ -15,7 +17,7 @@ module.exports = {
     // use_env_variable: 'TEST_DATABASE_URL', //add this back if I try to use the coverage tests in CI again
     username: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
-    database: 'mernolithic_test',
+    database: 'atilegodos_test',
     details: {
       host: '127.0.0.1', // use 'localhost' if go back to using this step in CI
       port: 3306,

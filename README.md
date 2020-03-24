@@ -36,7 +36,7 @@ MySQL-Express-React-Node app with custom webpack config, docker, CI config, test
 
 6. `cd frontend` and run `yarn install` to install frontend React dependencies
 
-7. Run `initialize.sh` command from the project root to automatically create staging and production Heroku remotes with MySql databases provisioned and deployed.
+7. Run `initialize.sh` command from the project root to automatically create staging and production Heroku remotes with MySql databases provisioned and deployed. \*update the database conig with your database names
 
 8. You can run the application locally by running command `yarn start-dev` from the project root to start the server on localhost:8080, and then `cd frontend` in another terminal and run `yarn start-dev` to start the Webpack dev server for the React frontend which you can view at localhost:8081
    this has hot reloading for easier development

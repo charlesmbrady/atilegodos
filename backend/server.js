@@ -1,12 +1,12 @@
+const path = require('path'); // Lets us use __dirname as the relative filepath from this file
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const express = require('express'); // Require express
 const app = express(); // Make app with express
 const PORT = process.env.PORT || 8080; // Set port to .env or default
 const db = require('./models/index.js'); // Require the database connection for server to access
 const routes = require('./routes'); // Require the routes to use for api endpoints
-const path = require('path'); // Lets us use __dirname as the relative filepath from this file
 const cookieParser = require('cookie-parser'); // for the auth token
 const withAuth = require('./middleware');
-require('dotenv').config();
 
 // Middlewares
 app.use(express.urlencoded({ limit: '100mb', extended: true }));
@@ -17,11 +17,8 @@ if (global.__coverage__) {
 }
 
 app.use(cookieParser());
-app.use(routes); // Link routesx
 
-app.get('/healthcheck', (req, res) => {
-  res.send('App is running!');
-});
+app.use(routes); // Link routesx
 
 // app.get('/api/healthcheck', (req, res) => {
 //   res.send('App is running!');
@@ -61,6 +58,8 @@ const syncOptions = {
 if (app.get('env') === 'test') {
   syncOptions.force = true;
 }
+
+console.log(db.sequelize);
 
 db.sequelize.sync(syncOptions).then(() => {
   if (app.get('env') !== 'test' || syncOptions.force === 'true') {
